@@ -1,7 +1,12 @@
 from fastapi import FastAPI, HTTPException, status
 
 from app.models import InventoryItem, Order, OrderCreate
-from app.service import UnknownSkuError, create_order as create_order_service, get_stock
+from app.service import (
+    InsufficientStockError,
+    UnknownSkuError,
+    create_order as create_order_service,
+    get_stock,
+)
 
 app = FastAPI(title="Demo Orders API")
 
@@ -27,3 +32,5 @@ def create_order(order: OrderCreate) -> Order:
         return create_order_service(order)
     except UnknownSkuError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="SKU not found") from exc
+    except InsufficientStockError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Insufficient stock") from exc
