@@ -43,6 +43,13 @@ def test_created_order_contains_expected_sku_and_quantity() -> None:
     assert response.json()["quantity"] == 3
 
 
+def test_rejects_order_when_quantity_exceeds_stock() -> None:
+    response = client.post("/orders", json={"sku": "MUG-001", "quantity": 100})
+
+    assert response.status_code == 400
+    assert response.json() == {"detail": "Insufficient stock"}
+
+
 def test_non_positive_quantity_is_rejected() -> None:
     response = client.post("/orders", json={"sku": "BOOK-001", "quantity": 0})
 
