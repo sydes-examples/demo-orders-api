@@ -23,3 +23,4 @@ def create_order(order: OrderCreate) -> Order:
         raise InsufficientStockError(order.sku)
 
     return repository.save_order(order)
+
