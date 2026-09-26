@@ -18,3 +18,4 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+	  prompt: "Review this pull request for correctness, security, and code quality issues. Post a summary review comment and inline comments on specific lines where relevant."
