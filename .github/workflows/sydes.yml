@@ -14,5 +14,6 @@ jobs:
     with:
       repo_alias: app
       model: openai:gpt-5.6-sol
+      renderer_ref: demo-2026-09-26-change-scoped-evidence
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
