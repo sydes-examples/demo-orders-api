@@ -18,7 +18,7 @@ jobs:
       repo_alias: app
       model: openai:gpt-6.1-sol
       ai_recovery: false
-      sydes_git_ref: 51ace4d
+      sydes_git_ref: c2e5a11
       renderer_ref: runtime-evidence
       runner: ubuntu-latest
       runtime_evidence: auto  # nothing else: environment, roots and tests are detected
