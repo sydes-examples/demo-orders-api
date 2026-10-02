@@ -10,17 +10,14 @@ permissions:
 
 jobs:
   sydes:
-    # Runtime evidence on Linux: Sydes from the integration branch (uv.lock pins diffgenome
-    # 0.1.4 from PyPI), DiffGenome's bubblewrap sandbox on ubuntu-latest, tests selected
-    # automatically from the change. AI recovery off for this validation.
-    uses: sydes-examples/sydes-action/.github/workflows/verify.yml@runtime-evidence
+    # Sydes Runtime Evidence — Beta from released artifacts only: sydes-action v2, Sydes from
+    # PyPI, DiffGenome from PyPI, Linux bubblewrap sandbox, tests selected automatically.
+    uses: sydes-examples/sydes-action/.github/workflows/verify.yml@v2
     with:
       repo_alias: app
       model: openai:gpt-6.1-sol
       ai_recovery: false
-      sydes_git_ref: 1cc0310
-      renderer_ref: runtime-evidence
-      runner: macos-15
-      runtime_evidence: auto  # nothing else: environment, roots and tests are detected
+      runner: ubuntu-latest
+      runtime_evidence: auto
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
