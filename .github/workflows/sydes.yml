@@ -20,7 +20,7 @@ jobs:
       ai_recovery: false
       sydes_git_ref: 1cc0310
       renderer_ref: runtime-evidence
-      runner: ubuntu-latest
+      runner: macos-15
       runtime_evidence: auto  # nothing else: environment, roots and tests are detected
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
